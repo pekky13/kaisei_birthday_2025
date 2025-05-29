@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>魁星誕生日記念メッセージサイト_2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Shippori Mincho', serif;
+      color: #ffffff;
+      background: linear-gradient(to bottom, #0e0e0e, #103c2e);
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-attachment: fixed;
+    }
+
+    #background-chouchin {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .chouchin {
+      position: absolute;
+      width: 400px;
+      opacity: 0.75;
+      animation: swing 2s ease-in-out infinite;
+      transform-origin: top center;
+      z-index: 2;
+    }
+
+    @keyframes swing {
+      0% { transform: rotate(3deg); }
+      50% { transform: rotate(-3deg); }
+      100% { transform: rotate(3deg); }
+    }
+
+    #door {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: 0.5;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    #key {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 100px;
+      transform: translate(-50%, -50%) rotate(0deg);
+      opacity: 0;
+      z-index: 4;
+      transition: opacity 1s, filter 1s;
+    }
+
+    .rotate-key {
+      animation: rotateKey 3s ease-in-out forwards;
+    }
+
+    .swing-key {
+      animation: swingKey 2s ease-in-out 3;
+    }
+
+    @keyframes rotateKey {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(180deg); }
+    }
+
+    @keyframes swingKey {
+      0% { transform: translate(-50%, -50%) rotate(180deg); }
+      25% { transform: translate(-50%, -50%) rotate(190deg); }
+      50% { transform: translate(-50%, -50%) rotate(170deg); }
+      75% { transform: translate(-50%, -50%) rotate(190deg); }
+      100% { transform: translate(-50%, -50%) rotate(180deg); }
+    }
+
+    #main-content {
+      text-align: center;
+      position: relative;
+      z-index: 3;
+      padding: 100px 20px 80px 20px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #c2a75f;
+      margin-top: 60px;
+    }
+
+   #countdown {
+  font-size: 2.5em;
+  margin-top: 20px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #d4af37, #b8860b, #fff8dc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.4), 0 0 8px rgba(212, 175, 55, 0.3);
+  animation: goldGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes goldGlow {
+  0% {
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.4), 0 0 8px rgba(212, 175, 55, 0.3);
+  }
+  100% {
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.7), 0 0 12px rgba(212, 175, 55, 0.5);
+  }
+}
+
+    #birthdayImage {
+      display: none;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      width: 90vw;
+      height: auto;
+      margin: 40px auto 0 auto; /* 上マージン＋左右中央揃え */
+      display: block; /* 中央揃えに必要 */
+      z-index: 5;
+    }
+
+    .floating-message {
+      position: absolute;
+      font-size: 1.2em;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 15px;
+      border-radius: 10px;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+      z-index: 6;
+    }
+
+    #footer {
+      background-color: #0C6F72; /* これはOK（不透明） */
+      color: #fff;
+      text-align: center;
+      padding: 15px 10px 30px 10px;
+      z-index: 11; /* ←ここを10以上に上げる */
+      position: relative; /* ←追加。positionがないとz-index効かない */
+    }
+
+    .social-links {
+      margin-top: 8px;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 10px;
+      vertical-align: middle;
+      transition: transform 0.3s;
+    }
+
+    .social-icon:hover {
+      transform: scale(1.2);
+    }
+
+    #messageButton {
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 1.2em;
+      border: 2px solid #c2a75f;
+      background-color: #a62c2b;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 30px;
+    }
+
+    #messageNotice {
+      font-size: 1em;
+      color: #fff;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="yourfile.mp3" type="audio/mp3">
+  </audio>
+
+  <div id="background-chouchin"></div>
+  <img id="door" src="door_closed.png" alt="ドア">
+  <img id="key" src="key.png" alt="鍵">
+
+  <div id="main-content">
+    <h1 id="countdownTitle">魁星 <br>誕生日まであと…</h1>
+    <div id="countdown"></div>
+    <img id="birthdayImage" src="birthday_art.png" alt="誕生日イラスト">
+    <a id="messageButton" href="https://forms.gle/71QwTHrwGuHQZQdr7" target="_blank">お祝いメッセージはこちら</a>
+    <div id="messageNotice">
+      頂いたメッセージは2025年6月9日0時0分に更新します。<br>
+      その後のメッセージは適宜更新しますので、ぜひたくさんのメッセージを送ってくださりますと幸いです。
+    </div>
+  </div>
+
+  <footer id="footer">
+    <p>魁星さんのYoutubeチャンネル・Xアカウント</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/@Kaisei_nijisanji" target="_blank">
+        <img src="Youtubeicon.png" alt="YouTube" class="social-icon">
+      </a>
+      <a href="https://x.com/Kaisei_2434" target="_blank">
+        <img src="xicon.png" alt="X" class="social-icon">
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const targetDate = new Date("2025-05-29T17:39:00");
+    const countdown = document.getElementById("countdown");
+    const title = document.getElementById("countdownTitle");
+    const key = document.getElementById("key");
+    const birthdayImage = document.getElementById("birthdayImage");
+
+    const messages = [
+      "魁星さん、お誕生日おめでとう！",
+      "ずっと応援しています！",
+      "これからも活躍を楽しみにしています！",
+      "素敵な一年になりますように！",
+      "笑顔あふれる1年になりますように！"
+    ];
+
+    function showMessageRandomly() {
+      const maxMessages = 2;
+      const currentMessages = document.querySelectorAll('.floating-message');
+      if (currentMessages.length >= 6) return;
+
+      for (let i = 0; i < maxMessages; i++) {
+        const msg = messages[Math.floor(Math.random() * messages.length)];
+        const span = document.createElement("div");
+        span.className = "floating-message";
+        span.innerText = msg;
+        const x = Math.random() * (window.innerWidth - 300);
+        const y = Math.random() * (window.innerHeight - 100);
+        span.style.left = `${x}px`;
+        span.style.top = `${y}px`;
+
+        document.body.appendChild(span);
+        setTimeout(() => { span.style.opacity = 1; }, i * 500);
+        setTimeout(() => {
+          span.style.opacity = 0;
+          setTimeout(() => span.remove(), 3000);
+        }, 4000 + i * 800);
+      }
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        title.style.display = "none";
+        countdown.innerText = "お誕生日おめでとうございます！";
+        key.style.opacity = 1;
+        key.classList.add("rotate-key");
+
+        setTimeout(() => {
+          key.classList.remove("rotate-key");
+          key.classList.add("swing-key");
+          key.style.filter = "brightness(2)";
+        }, 3000);
+
+        setTimeout(() => {
+          key.style.opacity = 0;
+          birthdayImage.style.display = "block";
+          setTimeout(() => {
+            birthdayImage.style.opacity = 1;
+            setInterval(showMessageRandomly, 3000);
+          }, 300);
+        }, 6000);
+      } else {
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((diff / (1000 * 60)) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+        countdown.innerText = `${d}日 ${h}時間 ${m}分 ${s}秒`;
+      }
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const chouchinContainer = document.getElementById("background-chouchin");
+    const leftChouchin = document.createElement("img");
+    leftChouchin.src = "chouchin.png";
+    leftChouchin.className = "chouchin";
+    leftChouchin.style.top = "0px";
+    leftChouchin.style.left = "0px";
+    leftChouchin.style.animationDelay = "0s";
+    chouchinContainer.appendChild(leftChouchin);
+
+    const rightChouchin = document.createElement("img");
+    rightChouchin.src = "chouchin.png";
+    rightChouchin.className = "chouchin";
+    rightChouchin.style.top = "0px";
+    rightChouchin.style.right = "0px";
+    rightChouchin.style.left = "auto";
+    rightChouchin.style.animationDelay = "1s";
+    chouchinContainer.appendChild(rightChouchin);
+  </script>
+</body>
+</html>
