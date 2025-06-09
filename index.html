@@ -75,7 +75,11 @@
       z-index: 2;
     }
 
-    
+    @keyframes swing {
+      0% { transform: rotate(3deg); }
+      50% { transform: rotate(-3deg); }
+      100% { transform: rotate(3deg); }
+    }
 
     #door {
       position: fixed;
@@ -88,7 +92,38 @@
       z-index: 0;
     }
 
-   
+    #key {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 100px;
+      transform: translate(-50%, -50%) rotate(0deg);
+      opacity: 0;
+      z-index: 4;
+      transition: opacity 1s, filter 1s;
+    }
+
+    .rotate-key {
+      animation: rotateKey 3s ease-in-out forwards;
+    }
+
+    .swing-key {
+      animation: swingKey 2s ease-in-out 3;
+    }
+
+    @keyframes rotateKey {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(180deg); }
+    }
+
+    @keyframes swingKey {
+      0% { transform: translate(-50%, -50%) rotate(180deg); }
+      25% { transform: translate(-50%, -50%) rotate(190deg); }
+      50% { transform: translate(-50%, -50%) rotate(170deg); }
+      75% { transform: translate(-50%, -50%) rotate(190deg); }
+      100% { transform: translate(-50%, -50%) rotate(180deg); }
+    }
+
     #main-content, #credits-content, #activities-content {
       text-align: center;
       position: relative;
@@ -120,7 +155,10 @@
       animation: goldGlow 4s ease-in-out infinite alternate;
     }
 
-    
+    @keyframes goldGlow {
+      0% { text-shadow: 0 0 4px rgba(255, 255, 255, 0.4), 0 0 8px rgba(212, 175, 55, 0.3); }
+      100% { text-shadow: 0 0 6px rgba(255, 255, 255, 0.7), 0 0 12px rgba(212, 175, 55, 0.5); }
+    }
 
     #birthdayImage {
       display: none;
@@ -229,6 +267,7 @@
   <!-- Background Elements -->
   <div id="background-chouchin"></div>
   <img id="door" src="door_closed.png" alt="ドア">
+  <img id="key" src="key.png" alt="鍵">
 
   <!-- Main Content -->
   <div id="main-content" class="active">
@@ -319,77 +358,81 @@
   const targetDate = new Date("2025-06-09T00:00:00");
   const countdown = document.getElementById("countdown");
   const title = document.getElementById("countdownTitle");
+  const key = document.getElementById("key");
   const birthdayImage = document.getElementById("birthdayImage");
   let showMessages = false;
 
   const messages = [
-    "実りある一年になるよう、これからも応援しています！",
-    "魁星さんお誕生日おめでとうございます✨　幸せいっぱいの1年になることを願っています!!"
-    "魁星さん、お誕生日おめでとう！",
-    "ずっと応援しています！",
-    "これからも活躍を楽しみにしています！",
-  ];
+  "魁星さん、お誕生日おめでとう！",
+  "ずっと応援しています！",
+  "これからも活躍を楽しみにしています！",  // 追加したメッセージ
+  "実りある一年になるよう、これからも応援しています！", // 追加したメッセージ
+  "魁星さんお誕生日おめでとうございます✨　幸せいっぱいの1年になることを願っています!!" // 追加したメッセージ
+];
 
-  // メッセージランダム表示
-  function showMessageRandomly() {
-    if (!showMessages) return;
-    const maxMessages = 5;
-    const currentMessages = document.querySelectorAll('.floating-message');
-    if (currentMessages.length >= 8) return;
-    for (let i = 0; i < maxMessages; i++) {
-      const msg = messages[Math.floor(Math.random() * messages.length)];
-      const span = document.createElement("div");
-      span.className = "floating-message";
-      span.innerText = msg;
-      const x = Math.random() * (window.innerWidth - 300);
-      const y = Math.random() * (window.innerHeight - 100);
-      span.style.left = `${x}px`;
-      span.style.top = `${y}px`;
-      document.body.appendChild(span);
-      setTimeout(() => { span.style.opacity = 1; }, i * 500);
-      setTimeout(() => {
-        span.style.opacity = 0;
-        setTimeout(() => span.remove(), 3000);
-      }, 4000 + i * 800);
-    }
+// メッセージランダム表示
+function showMessageRandomly() {
+  if (!showMessages) return; // showMessages が true の時のみ表示
+
+  const maxMessages = 5; // 最大5個のメッセージを表示
+  const currentMessages = document.querySelectorAll('.floating-message');
+  if (currentMessages.length >= 8) return; // メッセージが8個以上なら表示しない
+
+  for (let i = 0; i < maxMessages; i++) {
+    const msg = messages[Math.floor(Math.random() * messages.length)];
+    const span = document.createElement("div");
+    span.className = "floating-message";
+    span.innerText = msg;
+    const x = Math.random() * (window.innerWidth - 300);
+    const y = Math.random() * (window.innerHeight - 100);
+    span.style.left = `${x}px`;
+    span.style.top = `${y}px`;  // 表示位置調整（画面内にランダム配置）
+    document.body.appendChild(span);
+    setTimeout(() => { span.style.opacity = 1; }, i * 500); // フェードイン
+    setTimeout(() => {
+      span.style.opacity = 0; // フェードアウト
+      setTimeout(() => span.remove(), 3000);
+    }, 4000 + i * 800);
   }
+}
 
-  setInterval(() => {
-    if (document.getElementById('main-content').classList.contains('active')) {
-      showMessageRandomly();
-    }
-  }, 3000);
-
-  // カウントダウン更新
-  function updateCountdown() {
-    const now = new Date();
-    const diff = targetDate - now;
-    if (diff <= 0) {
-      title.style.display = "none";
-      countdown.innerText = "お誕生日おめでとうございます！";
-     
-        birthdayImage.style.display = "block";
-        setTimeout(() => {
-          birthdayImage.style.opacity = 1;
-          showMessages = true;
-        }, 300);
-      }, 6000);
-    } else {
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const m = Math.floor((diff / (1000 * 60)) % 60);
-      const s = Math.floor((diff / 1000) % 60);
-      countdown.innerText = `${d}日 ${h}時間 ${m}分 ${s}秒`;
-    }
+setInterval(() => {
+  if (document.getElementById('main-content').classList.contains('active')) {
+    showMessageRandomly();
   }
+}, 3000); // 3秒ごとにメッセージを表示
 
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+// カウントダウン更新
+function updateCountdown() {
+  const now = new Date();
+  const diff = targetDate - now;
+  if (diff <= 0) {
+    title.style.display = "none";
+    countdown.innerText = "お誕生日おめでとうございます！";
+    birthdayImage.style.display = "block";
+    setTimeout(() => {
+      birthdayImage.style.opacity = 1;
+      showMessages = true; // メッセージを表示
+    }, 300);
+  } else {
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+    countdown.innerText = `${d}日 ${h}時間 ${m}分 ${s}秒`;
+    showMessages = false; // カウントダウン中はメッセージを表示しない
+  }
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
 
   // ページ切り替え関数
   function showPage(page) {
     // ページ切り替え時に鍵をリセット
-    
+    key.style.opacity = 0;
+    key.classList.remove('rotate-key', 'swing-key');
+    key.style.filter = '';
 
     // ページ切り替え時にメッセージをクリア
     const existingMessages = document.querySelectorAll('.floating-message');
