@@ -75,12 +75,6 @@
       z-index: 2;
     }
 
-    @keyframes swing {
-      0% { transform: rotate(3deg); }
-      50% { transform: rotate(-3deg); }
-      100% { transform: rotate(3deg); }
-    }
-
     #door {
       position: fixed;
       top: 0;
@@ -92,38 +86,7 @@
       z-index: 0;
     }
 
-    #key {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 100px;
-      transform: translate(-50%, -50%) rotate(0deg);
-      opacity: 0;
-      z-index: 4;
-      transition: opacity 1s, filter 1s;
-    }
-
-    .rotate-key {
-      animation: rotateKey 3s ease-in-out forwards;
-    }
-
-    .swing-key {
-      animation: swingKey 2s ease-in-out 3;
-    }
-
-    @keyframes rotateKey {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(180deg); }
-    }
-
-    @keyframes swingKey {
-      0% { transform: translate(-50%, -50%) rotate(180deg); }
-      25% { transform: translate(-50%, -50%) rotate(190deg); }
-      50% { transform: translate(-50%, -50%) rotate(170deg); }
-      75% { transform: translate(-50%, -50%) rotate(190deg); }
-      100% { transform: translate(-50%, -50%) rotate(180deg); }
-    }
-
+   
     #main-content, #credits-content, #activities-content {
       text-align: center;
       position: relative;
@@ -153,11 +116,6 @@
       -webkit-text-fill-color: transparent;
       text-shadow: 0 0 4px rgba(255, 255, 255, 0.4), 0 0 8px rgba(212, 175, 55, 0.3);
       animation: goldGlow 4s ease-in-out infinite alternate;
-    }
-
-    @keyframes goldGlow {
-      0% { text-shadow: 0 0 4px rgba(255, 255, 255, 0.4), 0 0 8px rgba(212, 175, 55, 0.3); }
-      100% { text-shadow: 0 0 6px rgba(255, 255, 255, 0.7), 0 0 12px rgba(212, 175, 55, 0.5); }
     }
 
     #birthdayImage {
@@ -267,7 +225,6 @@
   <!-- Background Elements -->
   <div id="background-chouchin"></div>
   <img id="door" src="door_closed.png" alt="ドア">
-  <img id="key" src="key.png" alt="鍵">
 
   <!-- Main Content -->
   <div id="main-content" class="active">
@@ -358,7 +315,6 @@
   const targetDate = new Date("2025-06-09T00:00:00");
   const countdown = document.getElementById("countdown");
   const title = document.getElementById("countdownTitle");
-  const key = document.getElementById("key");
   const birthdayImage = document.getElementById("birthdayImage");
   let showMessages = false;
 
@@ -426,13 +382,6 @@ function updateCountdown() {
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
-
-  // ページ切り替え関数
-  function showPage(page) {
-    // ページ切り替え時に鍵をリセット
-    key.style.opacity = 0;
-    key.classList.remove('rotate-key', 'swing-key');
-    key.style.filter = '';
 
     // ページ切り替え時にメッセージをクリア
     const existingMessages = document.querySelectorAll('.floating-message');
