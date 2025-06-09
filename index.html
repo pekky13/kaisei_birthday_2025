@@ -347,7 +347,7 @@
     </div>
   </footer>
    <p style="text-align: center;">© 魁星 誕生日お祝い企画_2025 有志</p>
-  <script>
+ <script>
   window.addEventListener('load', () => {
     setTimeout(() => {
       document.getElementById('loading-screen').style.display = 'none';
@@ -415,7 +415,8 @@
         key.style.filter = "brightness(2)";
       }, 3000);
       setTimeout(() => {
-        key.style.opacity = 0;
+        key.style.opacity = 0; // モーション後に鍵をフェードアウト
+        key.classList.remove('swing-key');
         birthdayImage.style.display = "block";
         setTimeout(() => {
           birthdayImage.style.opacity = 1;
@@ -463,6 +464,7 @@
   }
 
 </script>
+
 
 </body>
 </html>
