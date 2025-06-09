@@ -86,7 +86,6 @@
       z-index: 0;
     }
 
-   
     #main-content, #credits-content, #activities-content {
       text-align: center;
       position: relative;
@@ -157,11 +156,7 @@
       z-index: 6;
     }
 
-    #credits-content {
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    #activities-content {
+    #credits-content, #activities-content {
       background-color: rgba(0, 0, 0, 0.5);
     }
 
@@ -236,62 +231,53 @@
       頂いたメッセージは2025年6月9日0時0分に更新します。<br>
       その後のメッセージは適宜更新いたします。是非たくさんのメッセージをお待ちしております！
     </div>
-    <!-- メッセージを表示する場所をイラストの上部に設定 -->
     <div id="initialMessages" style="position: absolute; top: 20%; left: 0; right: 0; z-index: 10;"></div>
   </div>
 
   <div id="credits-content">
-  <h1>クレジット</h1>
-  <p>このサイトはファン有志の非公式企画です。</p>
-  
-  <!-- 企画・主催セクション -->
-  <div style="margin-top: 20px;">
-    <h2 style="color: #c2a75f;">企画・主催・サイト制作・Loadingイラスト/アニメーション制作</h2>
-    <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 10px;">
-      <!-- Xアカウントアイコン -->
-      <a href="https://x.com/pekky1_3" target="_blank">
-        <img src="myicon.png" alt="X" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #c2a75f;">
-      </a>
-      <!-- アカウント名 -->
-      <div style="text-align: left;">
-        <p style="margin: 0; font-weight: bold;">ﾍﾟｷ</p>
-        <p style="margin: 0;">
-          <a href="https://x.com/pekky1_3" target="_blank" style="color: #c2a75f; text-decoration: none;">@pekky1_3</a>
-        </p>
+    <h1>クレジット</h1>
+    <p>このサイトはファン有志の非公式企画です。</p>
+    <div style="margin-top: 20px;">
+      <h2 style="color: #c2a75f;">企画・主催・サイト制作・Loadingイラスト/アニメーション制作</h2>
+      <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 10px;">
+        <a href="https://x.com/pekky1_3" target="_blank">
+          <img src="myicon.png" alt="X" style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #c2a75f;">
+        </a>
+        <div style="text-align: left;">
+          <p style="margin: 0; font-weight: bold;">ﾍﾟｷ</p>
+          <p style="margin: 0;">
+            <a href="https://x.com/pekky1_3" target="_blank" style="color: #c2a75f; text-decoration: none;">@pekky1_3</a>
+          </p>
+        </div>
       </div>
+    </div>
+    <div style="margin-top: 20px;">
+      <h2 style="color: #c2a75f;">メインビジュアルイラスト</h2>
+      <p>阿佐田 佑 様</p>
     </div>
   </div>
 
-  <!-- 制作など他のクレジット -->
-  <div style="margin-top: 20px;">
-    <h2 style="color: #c2a75f;">メインビジュアルイラスト</h2>
-    <p>阿佐田 佑 様</p>
-  </div>
-</div>
-
-  <!-- Activities Content -->
   <div id="activities-content">
     <h1>魁星さんの活動紹介</h1>
     <blockquote>
-  公式サイトは
-  <a href="https://www.nijisanji.jp/talents/l/kaisei" target="_blank" style="color: #c2a75f; text-decoration: none;">こちら</a>
-</blockquote>
+      公式サイトは
+      <a href="https://www.nijisanji.jp/talents/l/kaisei" target="_blank" style="color: #c2a75f; text-decoration: none;">こちら</a>
+    </blockquote>
     <p>歌ってみた動画のご紹介</p>
     <iframe src="https://www.youtube.com/embed/Q_XL0UtKTwg?si=5WwCuubS999IJRCL" allowfullscreen></iframe>
     <iframe src="https://www.youtube.com/embed/5zUb65g81Jo?si=C5x2hSPL3DA7Py9x" allowfullscreen></iframe>
     <h2>グッズご紹介</h2>
-<blockquote>
-  公式グッズショップは
-  <a href="https://shop.nijisanji.jp/1156" target="_blank" style="color: #c2a75f; text-decoration: none;">こちら</a>
-</blockquote>
+    <blockquote>
+      公式グッズショップは
+      <a href="https://shop.nijisanji.jp/1156" target="_blank" style="color: #c2a75f; text-decoration: none;">こちら</a>
+    </blockquote>
     <h2>ボイスご紹介</h2>
-<blockquote>
-  販売中のボイスは
-  <a href="https://shop.nijisanji.jp/dig-k-00022.html" target="_blank" style="color: #c2a75f; text-decoration: none;">こちら</a>
-</blockquote>
+    <blockquote>
+      販売中のボイスは
+      <a href="https://shop.nijisanji.jp/dig-k-00022.html" target="_blank" style="color: #c2a75f; text-decoration: none;">こちら</a>
+    </blockquote>
   </div>
 
-  <!-- Footer -->
   <footer id="footer">
     <p>魁星さんのYoutubeチャンネル・Xアカウント</p>
     <div class="social-links">
@@ -303,109 +289,100 @@
       </a>
     </div>
   </footer>
-   <p style="text-align: center;">© 魁星 誕生日お祝い企画_2025 有志</p>
- <script>
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      document.getElementById('loading-screen').style.display = 'none';
-    }, 1000);  // ローディング動画を1秒間だけ再生
-  });
+  <p style="text-align: center;">© 魁星 誕生日お祝い企画_2025 有志</p>
 
-  // カウントダウン対象の日付
-  const targetDate = new Date("2025-06-09T00:00:00");
-  const countdown = document.getElementById("countdown");
-  const title = document.getElementById("countdownTitle");
-  const birthdayImage = document.getElementById("birthdayImage");
-  let showMessages = false;
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loading-screen').style.display = 'none';
+      }, 1000);
+    });
 
-  const messages = [
-  "魁星さん、お誕生日おめでとう！",
-  "ずっと応援しています！",
-  "これからも活躍を楽しみにしています！",  // 追加したメッセージ
-  "実りある一年になるよう、これからも応援しています！", // 追加したメッセージ
-  "魁星さんお誕生日おめでとうございます✨　幸せいっぱいの1年になることを願っています!!" // 追加したメッセージ
-];
+    const targetDate = new Date("2025-06-09T00:00:00");
+    const countdown = document.getElementById("countdown");
+    const title = document.getElementById("countdownTitle");
+    const birthdayImage = document.getElementById("birthdayImage");
+    let showMessages = false;
 
-// メッセージランダム表示
-function showMessageRandomly() {
-  if (!showMessages) return; // showMessages が true の時のみ表示
+    const messages = [
+      "魁星さん、お誕生日おめでとう！",
+      "ずっと応援しています！",
+      "これからも活躍を楽しみにしています！",
+      "実りある一年になるよう、これからも応援しています！",
+      "魁星さんお誕生日おめでとうございます✨　幸せいっぱいの1年になることを願っています!!"
+    ];
 
-  const maxMessages = 5; // 最大5個のメッセージを表示
-  const currentMessages = document.querySelectorAll('.floating-message');
-  if (currentMessages.length >= 8) return; // メッセージが8個以上なら表示しない
-
-  for (let i = 0; i < maxMessages; i++) {
-    const msg = messages[Math.floor(Math.random() * messages.length)];
-    const span = document.createElement("div");
-    span.className = "floating-message";
-    span.innerText = msg;
-    const x = Math.random() * (window.innerWidth - 300);
-    const y = Math.random() * (window.innerHeight - 100);
-    span.style.left = `${x}px`;
-    span.style.top = `${y}px`;  // 表示位置調整（画面内にランダム配置）
-    document.body.appendChild(span);
-    setTimeout(() => { span.style.opacity = 1; }, i * 500); // フェードイン
-    setTimeout(() => {
-      span.style.opacity = 0; // フェードアウト
-      setTimeout(() => span.remove(), 3000);
-    }, 4000 + i * 800);
-  }
-}
-
-setInterval(() => {
-  if (document.getElementById('main-content').classList.contains('active')) {
-    showMessageRandomly();
-  }
-}, 3000); // 3秒ごとにメッセージを表示
-
-// カウントダウン更新
-function updateCountdown() {
-  const now = new Date();
-  const diff = targetDate - now;
-  if (diff <= 0) {
-    title.style.display = "none";
-    countdown.innerText = "お誕生日おめでとうございます！";
-    birthdayImage.style.display = "block";
-    setTimeout(() => {
-      birthdayImage.style.opacity = 1;
-      showMessages = true; // メッセージを表示
-    }, 300);
-  } else {
-    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const m = Math.floor((diff / (1000 * 60)) % 60);
-    const s = Math.floor((diff / 1000) % 60);
-    countdown.innerText = `${d}日 ${h}時間 ${m}分 ${s}秒`;
-    showMessages = false; // カウントダウン中はメッセージを表示しない
-  }
-}
-
-updateCountdown();
-setInterval(updateCountdown, 1000);
-
-    // ページ切り替え時にメッセージをクリア
-    const existingMessages = document.querySelectorAll('.floating-message');
-    existingMessages.forEach(msg => msg.remove());
-
-    // ページ切り替え処理
-    document.getElementById('main-content').classList.remove('active');
-    document.getElementById('credits-content').classList.remove('active');
-    document.getElementById('activities-content').classList.remove('active');
-    showMessages = false;  // どのページでもメッセージ一旦OFF
-
-    // 各ページの表示を切り替え
-    if (page === 'main') {
-      document.getElementById('main-content').classList.add('active');
-      showMessages = true;
-    } else if (page === 'credits') {
-      document.getElementById('credits-content').classList.add('active');
-    } else if (page === 'activities') {
-      document.getElementById('activities-content').classList.add('active');
+    function showMessageRandomly() {
+      if (!showMessages) return;
+      const maxMessages = 5;
+      const currentMessages = document.querySelectorAll('.floating-message');
+      if (currentMessages.length >= 8) return;
+      for (let i = 0; i < maxMessages; i++) {
+        const msg = messages[Math.floor(Math.random() * messages.length)];
+        const span = document.createElement("div");
+        span.className = "floating-message";
+        span.innerText = msg;
+        const x = Math.random() * (window.innerWidth - 300);
+        const y = Math.random() * (window.innerHeight - 100);
+        span.style.left = `${x}px`;
+        span.style.top = `${y}px`;
+        document.body.appendChild(span);
+        setTimeout(() => { span.style.opacity = 1; }, i * 500);
+        setTimeout(() => {
+          span.style.opacity = 0;
+          setTimeout(() => span.remove(), 3000);
+        }, 4000 + i * 800);
+      }
     }
-  }
 
-</script>
+    setInterval(() => {
+      if (document.getElementById('main-content').classList.contains('active')) {
+        showMessageRandomly();
+      }
+    }, 3000);
 
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+      if (diff <= 0) {
+        title.style.display = "none";
+        countdown.innerText = "お誕生日おめでとうございます！";
+        birthdayImage.style.display = "block";
+        setTimeout(() => {
+          birthdayImage.style.opacity = 1;
+          showMessages = true;
+        }, 300);
+      } else {
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const m = Math.floor((diff / (1000 * 60)) % 60);
+        const s = Math.floor((diff / 1000) % 60);
+        countdown.innerText = `${d}日 ${h}時間 ${m}分 ${s}秒`;
+        showMessages = false;
+      }
+    }
 
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    function showPage(page) {
+      const existingMessages = document.querySelectorAll('.floating-message');
+      existingMessages.forEach(msg => msg.remove());
+      document.getElementById('main-content').classList.remove('active');
+      document.getElementById('credits-content').classList.remove('active');
+      document.getElementById('activities-content').classList.remove('active');
+      showMessages = false;
+      if (page === 'main') {
+        document.getElementById('main-content').classList.add('active');
+        if (countdown.innerText === "お誕生日おめでとうございます！") {
+          showMessages = true;
+        }
+      } else if (page === 'credits') {
+        document.getElementById('credits-content').classList.add('active');
+      } else if (page === 'activities') {
+        document.getElementById('activities-content').classList.add('active');
+      }
+    }
+  </script>
 </body>
 </html>
