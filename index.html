@@ -338,9 +338,9 @@
   // メッセージランダム表示
   function showMessageRandomly() {
     if (!showMessages) return;
-    const maxMessages = 2;
+    const maxMessages = 5;
     const currentMessages = document.querySelectorAll('.floating-message');
-    if (currentMessages.length >= 6) return;
+    if (currentMessages.length >= 8) return;
     for (let i = 0; i < maxMessages; i++) {
       const msg = messages[Math.floor(Math.random() * messages.length)];
       const span = document.createElement("div");
